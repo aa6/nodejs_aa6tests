@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/aa6/nodejs_aa6tests#readme",
   "devDependencies": {
-    "jasmine-spec-reporter": "^2.4.0",
-    "coffee-script": "latest"
+    "jasmine" : "latest",
+    "coffee-script": "latest",
+    "jasmine-spec-reporter": "^2.4.0"
   }
 }
