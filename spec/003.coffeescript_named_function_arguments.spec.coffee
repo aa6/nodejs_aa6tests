@@ -1,5 +1,4 @@
-npmlibs = require("child_process").execSync("npm config get prefix").toString().trim()
-coffee = require "#{npmlibs}/lib/node_modules/coffee-script/"
+coffee = require("coffee-script")
 
 describe "CoffeeScript named arguments", ->
 
