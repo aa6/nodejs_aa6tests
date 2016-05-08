@@ -1,3 +1,6 @@
+npmlibs = require("child_process").execSync("npm config get prefix").toString().trim()
+coffee = require "#{npmlibs}/lib/node_modules/coffee-script/"
+
 describe "CoffeeScript named arguments", ->
 
   it "exist and work", ->
@@ -10,6 +13,12 @@ describe "CoffeeScript named arguments", ->
 
     fn3 = (foo,{bar,baz},qux) ->
       return foo + bar + baz + qux
+
+    fn4 = ({
+      foo,
+      bar
+    }) ->
+      return foo + bar
 
     expect(fn1(foo:"foo",bar:"bar")).toBe("foobar")
     expect(
@@ -37,3 +46,48 @@ describe "CoffeeScript named arguments", ->
         "qux"
       )
     ).toBe("foobarbazqux")
+
+    expect(fn4(foo:"foo",bar:"bar")).toBe("foobar")
+    expect(
+      fn4(
+        foo:"foo",
+        bar:"bar"
+      )
+    ).toBe("foobar")
+
+  it "have some syntax limitations", ->
+
+    try
+      coffee.eval(
+        """
+        fn = (
+          foo,
+          {bar,baz},
+          qux
+        )
+        """
+      )
+    catch err
+      errmessage = err.message
+
+    expect(errmessage).toBeDefined()
+    expect(errmessage).toBe('unexpected ,')
+
+    try
+      coffee.eval(
+        """
+        fn = (
+          foo,
+          {
+            bar,
+            baz
+          },
+          qux
+        )
+        """
+      )
+    catch err
+      errmessage = err.message
+
+    expect(errmessage).toBeDefined()
+    expect(errmessage).toBe('unexpected ,')
