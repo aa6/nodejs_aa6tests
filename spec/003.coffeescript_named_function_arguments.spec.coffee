@@ -131,7 +131,7 @@ describe "CoffeeScript named arguments", ->
     expect(result4).toBe("foobarbazqux")
 
 
-  it "have some syntax limitations", ->
+  it "has syntax limitations", ->
 
 
     # `fn1()` call should be `fn1({})` because it needs an object to make destructuring assignment.
