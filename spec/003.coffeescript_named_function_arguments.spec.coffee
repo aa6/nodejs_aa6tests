@@ -2,7 +2,7 @@
 
 describe "CoffeeScript named arguments", ->
 
-  it "exist and work", ->
+  it "exists and works", ->
 
     fn1 = ({foo,bar}) ->
       return foo + bar
