@@ -31,62 +31,70 @@ describe "CoffeeScript named arguments", ->
       return foo + bar + baz + qux
 
 
-    expect(fn1(foo:"foo",bar:"bar")).toBe("foobar")
-    expect(
+    result1 = fn1(foo:"foo",bar:"bar")
 
-      fn1(
-        foo:"foo",
-        bar:"bar"
-      )
 
-    ).toBe("foobar")
+    result2 = fn1(
+      foo:"foo",
+      bar:"bar"
+    )
 
-    expect(fn2("foo",bar:"bar",baz:"baz")).toBe("foobarbaz")
-    expect(
 
-      fn2(
-        "foo",
-        bar:"bar",
-        baz:"baz"
-      )
+    result3 = fn2("foo",bar:"bar",baz:"baz")
 
-    ).toBe("foobarbaz")
 
-    expect(fn3("foo",bar:"bar",baz:"baz","qux")).toBe("foobarbazqux")
-    expect(
+    result4 = fn2(
+      "foo",
+      bar:"bar",
+      baz:"baz"
+    )
 
-      fn3(
-        "foo",
-        bar:"bar",
-        baz:"baz",
-        "qux"
-      )
 
-    ).toBe("foobarbazqux")
+    result5 = fn3("foo",bar:"bar",baz:"baz","qux")
 
-    expect(fn4(foo:"foo",bar:"bar")).toBe("foobar")
-    expect(
 
-      fn4(
-        foo:"foo",
-        bar:"bar"
-      )
+    result6 = fn3(
+      "foo",
+      bar:"bar",
+      baz:"baz",
+      "qux"
+    )
 
-    ).toBe("foobar")
 
-    expect(fn5("foo",bar:"bar",baz:"baz","qux")).toBe("foobarbazqux")
-    expect(
+    result7 = fn4(foo:"foo",bar:"bar")
 
-      fn5(
-        "foo",
-        bar:"bar",
-        baz:"baz",
-        "qux"
-      )
-      
-    ).toBe("foobarbazqux")
+
+    result8 = fn4(
+      foo:"foo",
+      bar:"bar"
+    )
+
+
+    result9 = fn5("foo",bar:"bar",baz:"baz","qux")
+
+
+    result10 = fn5(
+      "foo",
+      bar:"bar",
+      baz:"baz",
+      "qux"
+    )
+
+
+    expect(result1).toBe("foobar")
+    expect(result2).toBe("foobar")
+    expect(result3).toBe("foobarbaz")
+    expect(result4).toBe("foobarbaz")
+    expect(result5).toBe("foobarbazqux")
+    expect(result6).toBe("foobarbazqux")
+    expect(result7).toBe("foobar")
+    expect(result8).toBe("foobar")
+    expect(result9).toBe("foobarbazqux")
+    expect(result10).toBe("foobarbazqux")
+
 
   it "have some syntax limitations", ->
+
 
     try
       coffee.eval(
@@ -100,6 +108,7 @@ describe "CoffeeScript named arguments", ->
       )
     catch err
       errmessage1 = err.message
+
 
     try
       coffee.eval(
@@ -116,6 +125,7 @@ describe "CoffeeScript named arguments", ->
       )
     catch err
       errmessage2 = err.message
+
 
     expect(errmessage1).toBeDefined()
     expect(errmessage1).toBe('unexpected ,')
