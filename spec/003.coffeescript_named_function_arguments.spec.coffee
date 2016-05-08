@@ -1,4 +1,4 @@
-coffee = require("coffee-script")
+[ coffee ] = [ (require "coffee-script") ]
 
 describe "CoffeeScript named arguments", ->
 
