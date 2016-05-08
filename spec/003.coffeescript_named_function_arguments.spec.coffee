@@ -68,10 +68,7 @@ describe "CoffeeScript named arguments", ->
         """
       )
     catch err
-      errmessage = err.message
-
-    expect(errmessage).toBeDefined()
-    expect(errmessage).toBe('unexpected ,')
+      errmessage1 = err.message
 
     try
       coffee.eval(
@@ -87,7 +84,10 @@ describe "CoffeeScript named arguments", ->
         """
       )
     catch err
-      errmessage = err.message
+      errmessage2 = err.message
 
-    expect(errmessage).toBeDefined()
-    expect(errmessage).toBe('unexpected ,')
+    expect(errmessage1).toBeDefined()
+    expect(errmessage1).toBe('unexpected ,')
+
+    expect(errmessage2).toBeDefined()
+    expect(errmessage2).toBe('unexpected ,')
