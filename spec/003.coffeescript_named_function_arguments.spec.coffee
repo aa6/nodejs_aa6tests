@@ -4,18 +4,25 @@ describe "CoffeeScript named arguments", ->
 
   it "exists and works", ->
     ################################################################################################
+
+
     fn1 = ({foo,bar}) ->
       return foo + bar
 
+
     result1 = fn1(foo:"foo",bar:"bar")
+
 
     result2 = fn1(
       foo:"foo",
       bar:"bar"
     )
+
     
     expect(result1).toBe("foobar")
     expect(result2).toBe("foobar")
+
+    
     ################################################################################################
     fn2 = (foo,{bar,baz}) ->
       return foo + bar + baz
