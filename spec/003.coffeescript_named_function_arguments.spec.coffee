@@ -274,6 +274,3 @@ describe "CoffeeScript named arguments", ->
 
 
     expect(errmessage3).toBe("unexpected ,")
-
-
-    ################################################################################################
