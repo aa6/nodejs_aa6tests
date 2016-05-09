@@ -131,6 +131,33 @@ describe "CoffeeScript named arguments", ->
     expect(result4).toBe("foobarbazqux")
 
 
+  it "can have trailing commas", ->
+
+
+    fn1 = ({foo,bar,}) ->
+      return foo + bar
+
+
+    fn2 = ({
+      foo,
+      bar,
+    }) ->
+      return foo + bar
+
+
+    result1 = fn1(foo:"foo",bar:"bar")
+
+
+    result2 = fn1(
+      foo:"foo",
+      bar:"bar"
+    )
+
+
+    expect(result1).toBe("foobar")
+    expect(result2).toBe("foobar")
+
+
   it "has syntax limitations", ->
 
 
