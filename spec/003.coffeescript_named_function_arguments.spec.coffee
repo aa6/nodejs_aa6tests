@@ -82,26 +82,24 @@ describe "CoffeeScript named arguments", ->
     ################################################################################################
 
   it "can have default values", ->
-
     ################################################################################################
     fn1 = ({foo = 'foo',bar}) ->
       return foo + bar
 
+    result1 = fn1(bar:"bar")
+
+    result2 = fn1({})
+
+    expect(result1).toBe("foobar")
+    expect(result2).toBe("fooundefined")
+    ################################################################################################
     fn2 = (foo,{
       bar,
       baz = 'baz'
     },qux) ->
       return foo + bar + baz + qux
 
-
-    result1 = fn1(bar:"bar")
-
-
-    result2 = fn1({})
-
-
     result3 = fn2("foo",bar:"bar","qux")
-
 
     result4 = fn2(
       "foo",
@@ -109,43 +107,44 @@ describe "CoffeeScript named arguments", ->
       "qux"
     )
 
-
-    expect(result1).toBe("foobar")
-    expect(result2).toBe("fooundefined")
     expect(result3).toBe("foobarbazqux")
     expect(result4).toBe("foobarbazqux")
-
+    ################################################################################################
 
   it "can have trailing commas", ->
-
-
+    ################################################################################################
     fn1 = ({foo,bar,}) ->
       return foo + bar
 
-
-    fn2 = ({
-      foo,
-      bar,
-    }) ->
-      return foo + bar
-
-
     result1 = fn1(foo:"foo",bar:"bar")
-
 
     result2 = fn1(
       foo:"foo",
       bar:"bar"
     )
 
-
     expect(result1).toBe("foobar")
     expect(result2).toBe("foobar")
+    ################################################################################################
+    fn2 = ({
+      foo,
+      bar,
+    }) ->
+      return foo + bar
 
+    result3 = fn2(foo:"foo",bar:"bar")
+
+    result4 = fn2(
+      foo:"foo",
+      bar:"bar"
+    )
+
+    expect(result3).toBe("foobar")
+    expect(result4).toBe("foobar")
+    ################################################################################################
 
   it "has syntax limitations", ->
-
-
+    ################################################################################################
     # `fn1()` call should be `fn1({})` because it needs an object to make destructuring assignment.
     try
       coffee.eval(
