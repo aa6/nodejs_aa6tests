@@ -1,4 +1,5 @@
 [ coffee ] = [ (require "coffee-script") ]
+
 describe "CoffeeScript destructuring assignments", ->
 
   it "can have mismatching arguments for an array form", ->
