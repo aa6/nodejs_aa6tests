@@ -17,7 +17,6 @@ describe "CoffeeScript named arguments", ->
     expect(result1).toBe("foobar")
     expect(result2).toBe("foobar")
     ################################################################################################
-    ################################################################################################
     fn2 = (foo,{bar,baz}) ->
       return foo + bar + baz
 
@@ -31,7 +30,6 @@ describe "CoffeeScript named arguments", ->
 
     expect(result3).toBe("foobarbaz")
     expect(result4).toBe("foobarbaz")
-    ################################################################################################
     ################################################################################################
     fn3 = (foo,{bar,baz},qux) ->
       return foo + bar + baz + qux
@@ -48,33 +46,29 @@ describe "CoffeeScript named arguments", ->
     expect(result5).toBe("foobarbazqux")
     expect(result6).toBe("foobarbazqux")
     ################################################################################################
-
     fn4 = ({
       foo,
       bar
     }) ->
       return foo + bar
 
-    fn5 = (foo,{
-      bar,
-      baz
-    },qux) ->
-      return foo + bar + baz + qux
-
-
-
-
     result7 = fn4(foo:"foo",bar:"bar")
-
 
     result8 = fn4(
       foo:"foo",
       bar:"bar"
     )
 
+    expect(result7).toBe("foobar")
+    expect(result8).toBe("foobar")
+    ################################################################################################
+    fn5 = (foo,{
+      bar,
+      baz
+    },qux) ->
+      return foo + bar + baz + qux
 
     result9 = fn5("foo",bar:"bar",baz:"baz","qux")
-
 
     result10 = fn5(
       "foo",
@@ -83,22 +77,15 @@ describe "CoffeeScript named arguments", ->
       "qux"
     )
 
-
-
-
-
-    expect(result7).toBe("foobar")
-    expect(result8).toBe("foobar")
     expect(result9).toBe("foobarbazqux")
     expect(result10).toBe("foobarbazqux")
-
+    ################################################################################################
 
   it "can have default values", ->
 
-
+    ################################################################################################
     fn1 = ({foo = 'foo',bar}) ->
       return foo + bar
-
 
     fn2 = (foo,{
       bar,
