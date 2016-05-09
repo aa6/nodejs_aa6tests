@@ -3,7 +3,6 @@
 describe "CoffeeScript named arguments", ->
 
   it "exists and works", ->
-
     ################################################################################################
     fn1 = ({foo,bar}) ->
       return foo + bar
@@ -18,7 +17,6 @@ describe "CoffeeScript named arguments", ->
     expect(result1).toBe("foobar")
     expect(result2).toBe("foobar")
     ################################################################################################
-
     ################################################################################################
     fn2 = (foo,{bar,baz}) ->
       return foo + bar + baz
@@ -34,7 +32,6 @@ describe "CoffeeScript named arguments", ->
     expect(result3).toBe("foobarbaz")
     expect(result4).toBe("foobarbaz")
     ################################################################################################
-
     ################################################################################################
     fn3 = (foo,{bar,baz},qux) ->
       return foo + bar + baz + qux
