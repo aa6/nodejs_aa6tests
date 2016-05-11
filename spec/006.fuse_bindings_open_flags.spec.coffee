@@ -144,38 +144,6 @@ describe "Fuse-bindings for Node.js", ->
                   done()
           )
 
-    int2bin = (int) ->
-      bitlen = Math.ceil((~0 >>> 0).toString(2).length)
-      return (("0".repeat(bitlen) + Number(int >>> 0).toString(2)).substr(-bitlen))
-
-    int2oct = (int) ->
-      bitlen = Math.ceil((~0 >>> 0).toString(2).length / 3)
-      return (("0".repeat(bitlen) + Number(int >>> 0).toString(8)).substr(-bitlen))
-
-    int2hex = (int) ->
-      bitlen = Math.ceil((~0 >>> 0).toString(2).length / 4)
-      return (("0".repeat(bitlen) + Number(int >>> 0).toString(16)).substr(-bitlen))
-
-    format_test_results = (fs_open_results,fuse_open_results) ->
-
-      str = "# FUSE open flags accordance to Node.js open flags on Linux:\n\n"
-      for flags, description of node_fs_open_flags
-        if (fuse_open_flags = fuse_open_results['/' + flags])?
-          str += "# #{(flags + "  ").substr(0,3)} "
-          for line, index in description.split('\n')
-            str += "      " if index > 0
-            str += "# #{line} \n"
-          str += "      # (Decimal): #{fuse_open_flags} (Octal): #{int2oct(fuse_open_flags)} (Hexadecimal): #{int2hex(fuse_open_flags)}\n"
-          str += "      # (Binary ): #{int2bin(fuse_open_flags)}\n"
-        else
-          str +=
-            """
-            # #{(flags + "  ").substr(0,3)} # FUSE.open() is never called
-            
-            """
-        str += "\n"
-      return str.trim()
-
     prepare_test_environment = (cb) ->
 
       fs.mkdir './mnt', ->
@@ -253,6 +221,38 @@ describe "Fuse-bindings for Node.js", ->
 
       process.on 'SIGINT', ->
         fuse.unmount './mnt', -> done()
+
+    int2bin = (int) ->
+      bitlen = Math.ceil((~0 >>> 0).toString(2).length)
+      return (("0".repeat(bitlen) + Number(int >>> 0).toString(2)).substr(-bitlen))
+
+    int2oct = (int) ->
+      bitlen = Math.ceil((~0 >>> 0).toString(2).length / 3)
+      return (("0".repeat(bitlen) + Number(int >>> 0).toString(8)).substr(-bitlen))
+
+    int2hex = (int) ->
+      bitlen = Math.ceil((~0 >>> 0).toString(2).length / 4)
+      return (("0".repeat(bitlen) + Number(int >>> 0).toString(16)).substr(-bitlen))
+
+    format_test_results = (fs_open_results,fuse_open_results) ->
+
+      str = "# FUSE open flags accordance to Node.js open flags on Linux:\n\n"
+      for flags, description of node_fs_open_flags
+        if (fuse_open_flags = fuse_open_results['/' + flags])?
+          str += "# #{(flags + "  ").substr(0,3)} "
+          for line, index in description.split('\n')
+            str += "      " if index > 0
+            str += "# #{line} \n"
+          str += "      # (Decimal): #{fuse_open_flags} (Octal): #{int2oct(fuse_open_flags)} (Hexadecimal): #{int2hex(fuse_open_flags)}\n"
+          str += "      # (Binary ): #{int2bin(fuse_open_flags)}\n"
+        else
+          str +=
+            """
+            # #{(flags + "  ").substr(0,3)} # FUSE.open() is never called
+            
+            """
+        str += "\n"
+      return str.trim()
 
     prepare_test_environment(
       start_the_test
