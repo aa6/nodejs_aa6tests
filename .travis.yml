@@ -1,3 +1,4 @@
 language: node_js
 node_js:
-  - "node" # Would install latest version of node according to https://github.com/creationix/nvm
+  - "5"
+  # - "node" # Would install latest version of node according to https://github.com/creationix/nvm
