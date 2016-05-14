@@ -9,8 +9,8 @@ describe "CoffeeScript snippets", ->
 
 
     fn1 = (list) ->
-      for item in list 
-        unless (current = item)? then current = "error"; break
+      for item in list
+        break if (current = item ? 'error') is 'error'
       return current
 
     result1 = fn1([ 1, 2, 3, 4, 5, 6])
@@ -21,7 +21,8 @@ describe "CoffeeScript snippets", ->
 
 
     fn2 = (list) ->
-      break for item in list when (current = item ? 'error') is 'error'
+      for item in list 
+        unless (current = item)? then current = "error"; break
       return current
 
     result3 = fn2([ 1, 2, 3, 4, 5, 6])
@@ -29,6 +30,17 @@ describe "CoffeeScript snippets", ->
 
     expect(result3).toBe(6)
     expect(result4).toBe("error")
+
+
+    fn3 = (list) ->
+      break for item in list when (current = item ? 'error') is 'error'
+      return current
+
+    result5 = fn3([ 1, 2, 3, 4, 5, 6])
+    result6 = fn3([ 1, 2, 3, undefined, 5, 6])
+
+    expect(result5).toBe(6)
+    expect(result6).toBe("error")
 
 
     ################################################################################################
