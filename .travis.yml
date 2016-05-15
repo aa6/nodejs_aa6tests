@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  #- "5"
-  - "node" # Would install latest version of node according to https://github.com/creationix/nvm
+  - "5" # Unfortunately, fuse-bindings do not compile for node v6.
+  #- "node" # Would install latest version of node according to https://github.com/creationix/nvm
 addons:
   apt:
     packages:
