@@ -65,7 +65,7 @@ describe "Fuse-bindings for Node.js", ->
 
       expect(test_results_formatted).toBe(
         """
-        # FUSE open flags accordance to Node.js open flags on Linux:
+        # 1FUSE open flags accordance to Node.js open flags on Linux:
 
         # r   # Open file for reading. An exception occurs if the file does not exist.
               # (Decimal): 32768 (Octal): 00000100000 (Hexadecimal): 00008000
