@@ -47,7 +47,7 @@ describe "Fuse-bindings for Node.js", ->
       "ax+":  """Like 'a+' but fails if path exists.
               """
 
-    test_expectances = ->
+    test_expectancies = ->
 
       expect(fuse_open_results['/r'  ]).toBe(0b00000000000000001000000000000000)
       expect(fuse_open_results['/r+' ]).toBe(0b00000000000000001000000000000010)
@@ -141,7 +141,7 @@ describe "Fuse-bindings for Node.js", ->
                   console.dir fs_open_results if debug
                   console.dir fuse_open_results if debug
                   console.log '\n"""\n' + test_results_formatted + '\n"""' if debug
-                  done()
+                  test_expectancies()
           )
 
     prepare_test_environment = (cb) ->
@@ -242,7 +242,7 @@ describe "Fuse-bindings for Node.js", ->
           str += "# #{(flags + "  ").substr(0,3)} "
           for line, index in description.split('\n')
             str += "      " if index > 0
-            str += "# #{line} \n"
+            str += "# #{line}\n"
           str += "      # (Decimal): #{fuse_open_flags} (Octal): #{int2oct(fuse_open_flags)} (Hexadecimal): #{int2hex(fuse_open_flags)}\n"
           str += "      # (Binary ): #{int2bin(fuse_open_flags)}\n"
         else
