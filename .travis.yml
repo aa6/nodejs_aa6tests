@@ -2,6 +2,12 @@ language: node_js
 node_js:
   - "5" # Unfortunately, fuse-bindings do not compile for node v6.
   #- "node" # Would install latest version of node according to https://github.com/creationix/nvm
+sudo: required
+before_install:
+  - sudo apt-get install -qq pkg-config fuse
+  - sudo modprobe fuse
+  - sudo chmod 666 /dev/fuse
+  - sudo chown root:$USER /etc/fuse.conf
 addons:
   apt:
     packages:
