@@ -19,7 +19,6 @@
   "devDependencies": {
     "jasmine" : "latest",
     "fs-extra" : "latest",
-    "fuse-bindings": "latest",
     "coffee-script": "latest",
     "jasmine-spec-reporter": "latest"
   }
