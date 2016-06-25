@@ -66,8 +66,13 @@ describe "CoffeeScript array manipulations", ->
     arr2 = ["A"," ","C","D"," ","F","|","A"," ","C","D"," ","F"]
 
 
-    arr1_without_arr2_1 = (-> @push el for el in arr1 when el not in @ and el not in arr2;@).apply([])
+    arr1_without_arr2_1 = arr1.filter((el) -> !arr2.includes(el))
     expect(arr1_without_arr2_1).toEqual(
+      ["B","E","B","E"]
+    )
+
+    arr1_without_arr2_unique_1 = (-> @push el for el in arr1 when el not in @ and el not in arr2;@).apply([])
+    expect(arr1_without_arr2_unique_1).toEqual(
       ["B","E"]
     )
 
