@@ -47,8 +47,12 @@ describe "CoffeeScript array manipulations", ->
 
 
     # Array intersections.
-    multiple_array_intersect_1 = [arr1,arr2,arr3].reduce((prev,next) -> prev.filter((el) -> next.includes(el)))
+    multiple_array_intersect_1 = [arr1,arr2,arr3].reduce((prev,next) -> prev.filter((el) -> el in next))
+    multiple_array_intersect_2 = [arr1,arr2,arr3].reduce((prev,next) -> prev.filter((el) -> next.includes(el)))
     expect(multiple_array_intersect_1).toEqual(
+      ["A"," ","D"," ","|","A"," ","D"," "]
+    )
+    expect(multiple_array_intersect_2).toEqual(
       ["A"," ","D"," ","|","A"," ","D"," "]
     )
 
