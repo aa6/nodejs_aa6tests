@@ -65,16 +65,22 @@ describe "CoffeeScript array manipulations", ->
     arr1 = ["A","B"," ","D","E"," ","|","A","B"," ","D","E"," "]
     arr2 = ["A"," ","C","D"," ","F","|","A"," ","C","D"," ","F"]
 
-
-    arr1_without_arr2_1 = arr1.filter((el) -> !arr2.includes(el))
-    arr1_without_arr2_2 = (-> @push el for el in arr1 when el not in arr2;@).apply([])
+    arr1_without_arr2_1 = arr1.filter((el) -> el !in arr2)
+    arr1_without_arr2_2 = arr1.filter((el) -> el not in arr2)
+    arr1_without_arr2_3 = arr1.filter((el) -> !arr2.includes(el))
+    arr1_without_arr2_4 = (-> @push el for el in arr1 when el not in arr2;@).apply([])
     expect(arr1_without_arr2_1).toEqual(
       ["B","E","B","E"]
     )
     expect(arr1_without_arr2_2).toEqual(
       ["B","E","B","E"]
     )
-
+    expect(arr1_without_arr2_3).toEqual(
+      ["B","E","B","E"]
+    )
+    expect(arr1_without_arr2_4).toEqual(
+      ["B","E","B","E"]
+    )
 
     arr1_without_arr2_unique_1 = (-> @push el for el in arr1 when el not in @ and el not in arr2;@).apply([])
     expect(arr1_without_arr2_unique_1).toEqual(
@@ -98,11 +104,18 @@ describe "CoffeeScript array manipulations", ->
     array_unique_2 = arr1.filter((el,key,arr) -> arr.indexOf(el) is key)
     array_unique_3 = (-> @push el for el in arr1 when el not in @;@).apply([])
     array_unique_4 = (item for item, key in arr1 when key is arr1.indexOf(item))
-
-    expect(array_unique_1).toEqual(["A","B"," ","D","E","|"])
-    expect(array_unique_2).toEqual(["A","B"," ","D","E","|"])
-    expect(array_unique_3).toEqual(["A","B"," ","D","E","|"])
-    expect(array_unique_4).toEqual(["A","B"," ","D","E","|"])
+    expect(array_unique_1).toEqual(
+      ["A","B"," ","D","E","|"]
+    )
+    expect(array_unique_2).toEqual(
+      ["A","B"," ","D","E","|"]
+    )
+    expect(array_unique_3).toEqual(
+      ["A","B"," ","D","E","|"]
+    )
+    expect(array_unique_4).toEqual(
+      ["A","B"," ","D","E","|"]
+    )
 
 
     ################################################################################################
