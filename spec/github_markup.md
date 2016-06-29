@@ -8,7 +8,7 @@
 
   <ruby title="[L16](/spec/coffeescript_array_manipulations.spec.coffee#L16)">Insanity.</ruby>
 
-  <ruby>Called on filesystem initialization, prior to all other functions.<rt>[:360](/spec/coffeescript_array_manipulations.spec.coffee#L16)</rt></ruby> Called only one time per each mount.<sup>[:284](/spec/coffeescript_array_manipulations.spec.coffee#L16)</sup><sup>[:586](/spec/coffeescript_array_manipulations.spec.coffee#L16)</sup> Always accepts only one input argument.<sup>[:1316](/spec/coffeescript_array_manipulations.spec.coffee#L16)</sup>
+  Called on filesystem initialization, prior to all other functions<ruby>.<rt>[*](/spec/coffeescript_array_manipulations.spec.coffee#L16)</rt></ruby> Called only one time per each mount.<sup>[:284](/spec/coffeescript_array_manipulations.spec.coffee#L16)</sup><sup>[:586](/spec/coffeescript_array_manipulations.spec.coffee#L16)</sup> Always accepts only one input argument.<sup>[:1316](/spec/coffeescript_array_manipulations.spec.coffee#L16)</sup>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
