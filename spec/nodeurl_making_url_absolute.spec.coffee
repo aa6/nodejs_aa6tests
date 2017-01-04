@@ -9,13 +9,13 @@ describe "Making url absolute using built-in url module", ->
 
     for item in ([
       {
-        base_url: "http://test.domain.com/pages/3.html",
-        relative_url: "/about.html",
+        base_url: "http://test.domain.com/pages/3.html"
+        relative_url: "/about.html"
         expected_result: "http://test.domain.com/about.html"
       }
       {
-        base_url: "http://test.domain.com/pages/3.html",
-        relative_url: "about.html",
+        base_url: "http://test.domain.com/pages/3.html"
+        relative_url: "about.html"
         expected_result: "http://test.domain.com/pages/about.html"
       }
     ])
