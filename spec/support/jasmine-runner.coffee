@@ -1,5 +1,5 @@
 Jasmine = require('jasmine')
-SpecReporter = require('jasmine-spec-reporter')
+SpecReporter = require('jasmine-spec-reporter').SpecReporter
 noop = ->
 
 jrunner = new Jasmine()
